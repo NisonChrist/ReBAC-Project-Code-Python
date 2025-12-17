@@ -1,0 +1,1813 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<PolicySet xmlns="urn:oasis:names:tc:xacml:3.0:core:schema:wd-17" PolicyCombiningAlgId="urn:oasis:names:tc:xacml:3.0:policy-combining-algorithm:permit-overrides" PolicySetId="sli-mli-interface" Version="1.0">
+    <Target>
+        <AnyOf>
+            <AllOf>
+                <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                    <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                    <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="true"/>
+                </Match>
+            </AllOf>
+        </AnyOf>
+    </Target>
+    <Policy PolicyId="mli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="mli:vi-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Request-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Instantiate-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Decommission-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-Time</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:vi-request-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI-Request</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Query-VI-Request-Status</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Get-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Sign-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vr-it-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vlink-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="sli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="sli:operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Decommission-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Operate-VR</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Add-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Create-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Instantiate-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp-info">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Get-Available-VR-Pool-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-monitoring-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-State-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Power-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Status-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Monitor-VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-subscription-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Subscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Unsubscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="mli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="mli:vi-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Request-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Instantiate-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Decommission-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-Time</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:vi-request-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI-Request</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Query-VI-Request-Status</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Get-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Sign-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vr-it-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vlink-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="sli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="sli:operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Decommission-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Operate-VR</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Add-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Create-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Instantiate-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp-info">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Get-Available-VR-Pool-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-monitoring-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-State-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Power-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Status-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Monitor-VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-subscription-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Subscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Unsubscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="mli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="mli:vi-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Request-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Instantiate-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Decommission-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-Time</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:vi-request-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI-Request</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Query-VI-Request-Status</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Get-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Sign-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vr-it-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vlink-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="sli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="sli:operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Decommission-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Operate-VR</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Add-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Create-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Instantiate-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp-info">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Get-Available-VR-Pool-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-monitoring-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-State-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Power-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Status-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Monitor-VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-subscription-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Subscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Unsubscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="mli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="mli:vi-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Request-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Instantiate-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Decommission-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-Time</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:vi-request-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI-Request</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Query-VI-Request-Status</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Get-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Sign-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vr-it-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vlink-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="sli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="sli:operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Decommission-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Operate-VR</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Add-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Create-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Instantiate-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp-info">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Get-Available-VR-Pool-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-monitoring-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-State-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Power-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Status-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Monitor-VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-subscription-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Subscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Unsubscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="mli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="mli:vi-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Request-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Instantiate-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Decommission-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-Time</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:vi-request-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI-Request</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Query-VI-Request-Status</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Get-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Sign-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vr-it-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vlink-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="sli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="sli:operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Decommission-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Operate-VR</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Add-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Create-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Instantiate-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp-info">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Get-Available-VR-Pool-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-monitoring-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-State-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Power-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Status-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Monitor-VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-subscription-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Subscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Unsubscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="mli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="mli:vi-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Request-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Instantiate-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Decommission-VI</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-Time</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:vi-request-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VI-Request</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Query-VI-Request-Status</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Get-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:Sign-SLA-Offer</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vr-it-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="mli:replanning:vlink-operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Add-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Modify-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">MLI:ReplanningVI:Delete-VLink</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+    <Policy PolicyId="sli-interface" RuleCombiningAlgId="urn:oasis:names:tc:xacml:3.0:rule-combining-algorithm:permit-overrides" Version="1.0">
+        <Target>
+            <AnyOf>
+                <AllOf>
+                    <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                        <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VIO</AttributeValue>
+                        <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/subject/subject-role" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                    </Match>
+                </AllOf>
+            </AnyOf>
+        </Target>
+        <Rule Effect="Permit" RuleId="sli:operations">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Decommission-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Operate-VR</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Add-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-VirtualNetworkIf</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Create-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Remove-StorageImage</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Instantiate-VR-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:vr-rp-info">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-RP-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Get-Available-VR-Pool-IT</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-monitoring-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-State-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Power-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Status-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Monitor-VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+        <Rule Effect="Permit" RuleId="sli:node-subscription-actions">
+            <Target>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">VR-Info</AttributeValue>
+                            <AttributeDesignator AttributeId="http://authz-interop.org/AAA/xacml/resource/resource-type" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+                <AnyOf>
+                    <AllOf>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Subscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                        <Match MatchId="urn:oasis:names:tc:xacml:1.0:function:string-equal">
+                            <AttributeValue DataType="http://www.w3.org/2001/XMLSchema#string">SLI:Unsubscribe-VR-Monitoring</AttributeValue>
+                            <AttributeDesignator AttributeId="urn:oasis:names:tc:xacml:1.0:action:action-id" DataType="http://www.w3.org/2001/XMLSchema#string" MustBePresent="false"/>
+                        </Match>
+                    </AllOf>
+                </AnyOf>
+            </Target>
+        </Rule>
+    </Policy>
+</PolicySet>
