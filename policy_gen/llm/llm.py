@@ -6,17 +6,17 @@ from .prompt import Prompt
 
 class LLM:
     def __init__(self, prompt_list: list[Prompt]):
-        self.model = "Deepseek-V3.2"
-        self._api_key = (
-            os.getenv("DEEPSEEK_API_KEY") if load_dotenv(dotenv_path=".env") else None
-        )
         self.prompt_list = prompt_list
         self.history: list[dict[str, str | dict]] = []
 
     def generate(self) -> list[dict[str, str | dict]]:
         client = OpenAI(
-            api_key=self._api_key,
-            base_url="https://api.deepseek.com",
+            api_key=os.getenv("DEEPSEEK_API_KEY")
+            if load_dotenv(dotenv_path=".env")
+            else None,
+            base_url=os.getenv("DEEPSEEK_API_BASE_URL")
+            if load_dotenv(dotenv_path=".env")
+            else None,
         )
         for prompt in self.prompt_list:
             response = client.chat.completions.create(
