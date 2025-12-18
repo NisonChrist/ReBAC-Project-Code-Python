@@ -51,12 +51,23 @@ def extract_policies_to_csv(xml_file_path, output_csv_path):
     print(f"Saved to {output_csv_path}")
 
 
-if __name__ == "__main__":
-    # Input and output file paths
-    script_dir = Path(__file__).parent.absolute()
-    # print(f"Script directory: {script_dir}")
-    input_dir = script_dir
-    output_dir = script_dir / "xacml-policies"
+def convert_all_xacml_files(input_dir=None, output_dir=None):
+    """
+    Convert all XACML XML files in a directory to CSV format.
+
+    Args:
+        input_dir: Input directory containing XML files (defaults to script directory)
+        output_dir: Output directory for CSV files (defaults to xacml-policies subdirectory)
+    """
+    if input_dir is None:
+        input_dir = Path(__file__).parent.absolute()
+    else:
+        input_dir = Path(input_dir)
+
+    if output_dir is None:
+        output_dir = input_dir / "xacml-policies"
+    else:
+        output_dir = Path(output_dir)
 
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -64,9 +75,16 @@ if __name__ == "__main__":
     for filename in os.listdir(input_dir):
         if filename.endswith(".xml"):
             input_path = os.path.join(input_dir, filename)
-            output_path = os.path.join(
-                output_dir, filename.replace(".xml", ".csv")
-            )
+            output_path = os.path.join(output_dir, filename.replace(".xml", ".csv"))
             extract_policies_to_csv(input_path, output_path)
 
     print("Extraction completed for all files in the directory.")
+
+
+if __name__ == "__main__":
+    # Input and output file paths
+    script_dir = Path(__file__).parent.absolute()
+    input_dir = script_dir
+    output_dir = script_dir / "xacml-policies"
+
+    convert_all_xacml_files(input_dir, output_dir)
