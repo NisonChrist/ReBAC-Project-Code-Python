@@ -13,9 +13,12 @@ class Prompt:
     def get_user_msg(self) -> str:
         return self._user_msg
 
+    def get_prompt(self) -> dict[str, str]:
+        return {"system": self._system_msg, "user": self._user_msg}
+
     def format(self, **kwargs) -> dict[str, str]:
         formatted_user = self.template.substitute(**kwargs)
         return {"system": self._system_msg, "user": formatted_user}
-
+    
     def __str__(self):
         return f"System Msg: {self._system_msg}\nUser Msg: {self._user_msg}"

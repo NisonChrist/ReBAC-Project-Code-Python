@@ -11,9 +11,9 @@ class LLM:
             os.getenv("DEEPSEEK_API_KEY") if load_dotenv(dotenv_path=".env") else None
         )
         self.prompt_list = prompt_list
-        self.history: list[dict[Prompt, str]] = []
+        self.history: list[dict[str, str | dict]] = []
 
-    def generate(self) -> list[dict[Prompt, str]]:
+    def generate(self) -> list[dict[str, str | dict]]:
         client = OpenAI(
             api_key=self._api_key,
             base_url="https://api.deepseek.com",
@@ -28,5 +28,5 @@ class LLM:
                 response_format={"type": "json_object"},
             )
             output = response.choices[0].message.content or "{}"
-            self.history.append({prompt: output})
+            self.history.append({"prompt": prompt.get_prompt(), "output": output})
         return self.history
