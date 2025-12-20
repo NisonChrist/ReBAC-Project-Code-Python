@@ -6,5 +6,4 @@ __pycache__/
 .vscode/
 doc/
 __test__.py
-eval_policy_gen.py
 _patch.py
