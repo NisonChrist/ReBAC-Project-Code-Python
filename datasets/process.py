@@ -40,7 +40,9 @@ class DatasetReader:
                     print(f"Loaded {file_name} with shape: {df.shape}")
                 elif file_name.endswith(".xml"):
                     with open(file_path, "r", encoding="utf-8") as file:
-                        policy_pattern = re.compile(r"<Policy[\s\S]*?<\/Policy>")
+                        policy_pattern = re.compile(
+                            r"<Policy\s[^>]*>[\s\S]*?<\/Policy>"
+                        )
                         xacml_content = file.read()
                         policies = policy_pattern.findall(xacml_content)
                         datasets[file_name] = pd.DataFrame({"policy": policies})

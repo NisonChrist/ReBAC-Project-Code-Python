@@ -5,3 +5,5 @@ __pycache__/
 .backup/
 .vscode/
 doc/
+__test__.py
+eval_policy_gen.py
