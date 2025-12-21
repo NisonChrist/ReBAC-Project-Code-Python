@@ -13,5 +13,24 @@ This project implements a Datalog-Based workflow for generating and translating 
 [![Policy Generation Rate](imgs/gen_rate.png)](imgs/gen_rate.png)
 
 [![Policy Generation Results](imgs/eval_policy_gen.png)](imgs/eval_policy_gen.png)
+
 ## Policy Translation
+
+### Target ReBAC Models:
+
+1. Carminati et al.'s ReBAC Model
+2. Fong et al.'s ReBAC Model
+3. Cheng et al.'s ReBAC Model
+4. Crampton et al.'s ReBAC Model
+
+### Algorithm 1: Translation to Carminati et al.'s ReBAC Model
+> Coming soon...
+
+### Algorithm 2: Translation to Fong et al.'s ReBAC Model
+> Coming soon...
+
+### Algorithm 3: Translation to Cheng et al.'s ReBAC Model
+> Coming soon...
+
+### Algorithm 4: Translation to Crampton et al.'s ReBAC Model
 > Coming soon...
