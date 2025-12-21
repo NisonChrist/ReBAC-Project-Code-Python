@@ -10,7 +10,8 @@ This project implements a Datalog-Based workflow for generating and translating 
 
 ## Policy Generation
 
-[![Policy Generation Rate](imgs/eval_policy_gen.png)](imgs/eval_policy_gen.png)
+[![Policy Generation Rate](imgs/gen_rate.png)](imgs/gen_rate.png)
 
+[![Policy Generation Results](imgs/eval_policy_gen.png)](imgs/eval_policy_gen.png)
 ## Policy Translation
 > Coming soon...

@@ -7,3 +7,5 @@ __pycache__/
 doc/
 __test__.py
 _patch.py
+dist/
+*.pdf
