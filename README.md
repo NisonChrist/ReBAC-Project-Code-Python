@@ -6,7 +6,7 @@ This project implements a Datalog-Based workflow for generating and translating 
 - Phase 1: Policy Generation: Generating ReBAC policies in Datalog format from natural language statements and xacml specifications by using LLM.
 - Phase 2: Policy Translation: Translating policies from Datalog format to the four representative ReBAC models' specific policies.
 
-[![Workflow](imgs/workflow.png)](imgs/workflow.png)
+[![Workflow](imgs/workflow_dpi300.png)](imgs/workflow_dpi300.png)
 
 ## Policy Generation
 
