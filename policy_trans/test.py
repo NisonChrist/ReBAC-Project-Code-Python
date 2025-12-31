@@ -8,8 +8,23 @@ EXAMPLE_DATALOG = """{
     "actions": "can_prescribe(D, P, DR) :- Prescriber(D), Patient(P), Drug(DR), not has_allergy(P, DR)."
 }"""
 
+# datalog = Datalog(EXAMPLE_DATALOG)
+# datalog_specs = datalog.specifications()
+# print("Datalog Specifications:")
+# for key, value in datalog_specs.items():
+#     print(f"{key}: {value}")
+
 datalog = Datalog(EXAMPLE_DATALOG)
-datalog_specs = datalog.specifications()
-print("Datalog Specifications:")
-for key, value in datalog_specs.items():
-    print(f"{key}: {value}")
+print("=== Original Datalog Policy ===")
+print(datalog)
+
+print("\\n=== Translated to Cheng UURAC ===")
+cheng = datalog.translate2cheng()
+if cheng:
+    print(cheng)
+    print("\\n=== Specifications ===")
+    specs = cheng.specifications()
+    for key, value in specs.items():
+        print(f"{key}: {value}")
+else:
+    print("Translation failed")

@@ -30,7 +30,43 @@ This project implements a Datalog-Based workflow for generating and translating 
 > Coming soon...
 
 ### Algorithm 3: Translation to Cheng et al.'s ReBAC Model
-> Coming soon...
+
+The translation algorithm converts Datalog policies to Cheng et al.'s UURAC (User-to-User Relationship-based Access Control) model.
+
+#### UURAC Policy Components
+
+| Policy Type | Specification | Description |
+|-------------|---------------|-------------|
+| **Accessing User Policy (AUP)** | `⟨action, (start, path rule)⟩` | Outgoing action policies |
+| **Target User Policy (TUP)** | `⟨action⁻¹, (start, path rule)⟩` | Incoming action policies for users |
+| **Target Resource Policy (TRP)** | `⟨action⁻¹, r_t, (start, path rule)⟩` | Policies for resources |
+| **System Policy for User** | `⟨action, (start, path rule)⟩` | System-wide user policies |
+| **System Policy for Resource** | `⟨action⁻¹, r.type, (start, path rule)⟩` | System-wide resource policies |
+
+#### Graph Rule Grammar
+
+```
+GraphRule    ::= (⟨StartingNode⟩, ⟨PathRule⟩)
+PathRule     ::= ⟨PathSpecExp⟩ | ⟨PathSpecExp⟩ ⟨Connective⟩ ⟨PathRule⟩
+Connective   ::= or | and
+PathSpecExp  ::= ⟨PathSpec⟩ | ¬⟨PathSpec⟩
+PathSpec     ::= (⟨Path⟩, ⟨HopCount⟩) | (∅, ⟨HopCount⟩)
+Path         ::= ⟨TypeExp⟩ | ⟨TypeExp⟩ ⟨Path⟩
+TypeExp      ::= ⟨TypeSpecifier⟩ | ⟨TypeSpecifier⟩ ⟨Wildcard⟩
+StartingNode ::= u_a | u_t | u_c
+Wildcard     ::= * | ? | +
+```
+
+#### Translation Mapping
+
+| Datalog | UURAC |
+|---------|-------|
+| Relationship predicates | Path expressions (TypeExp) |
+| `not predicate` | Negated PathSpecExp (¬) |
+| Multiple conditions | AND-connected PathRule |
+| User-to-user actions | AccessingUserPolicy / TargetUserPolicy |
+| User-to-resource actions | TargetResourcePolicy |
+
 
 ### Algorithm 4: Translation to Crampton et al.'s ReBAC Model
 > Coming soon...
