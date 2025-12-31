@@ -1,4 +1,4 @@
-from .policy import Policy
+from policy import Policy
 
 
 class Fong(Policy):
