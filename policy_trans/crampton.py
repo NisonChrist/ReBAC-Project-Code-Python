@@ -1,4 +1,4 @@
-from policy import Policy
+from policy_trans.policy import Policy
 
 
 class Crampton(Policy):

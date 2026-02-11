@@ -1,4 +1,4 @@
-from policy import Policy
+from policy_trans.policy import Policy
 from typing import Any
 from enum import Enum
 from dataclasses import dataclass

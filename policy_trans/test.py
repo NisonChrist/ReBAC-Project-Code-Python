@@ -1,4 +1,4 @@
-from datalog import Datalog
+from policy_trans.datalog import Datalog
 
 
 EXAMPLE_DATALOG = """{

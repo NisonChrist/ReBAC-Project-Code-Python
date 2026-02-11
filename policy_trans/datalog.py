@@ -1,8 +1,8 @@
 import json
 import re
-from policy import Policy
-from carminati import Carminati
-from cheng import (
+from policy_trans.policy import Policy
+from policy_trans.carminati import Carminati
+from policy_trans.cheng import (
     Cheng,
     Connective,
     StartingNode,
@@ -17,8 +17,8 @@ from cheng import (
     SystemPolicyForUser,
     SystemPolicyForResource,
 )
-from crampton import Crampton
-from fong import Fong
+from policy_trans.crampton import Crampton
+from policy_trans.fong import Fong
 
 
 class Datalog(Policy):
